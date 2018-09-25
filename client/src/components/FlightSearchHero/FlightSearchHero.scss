@@ -1,0 +1,9 @@
+@import '~bpk-mixins';
+
+.FlightSearchHero {
+  .direction-icon__flight {
+    fill: $bpk-color-white;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}
