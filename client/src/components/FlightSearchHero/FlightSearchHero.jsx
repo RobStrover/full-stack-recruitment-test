@@ -22,7 +22,7 @@ const FlightSearchHero = (props) => (
         <Hero>
             <BpkText tagName="h1" textStyle="xxl">
                 <AlignedLarge>
-                    EDI<LongArrowRightIconLg className={c('direction-icon__flight')} />LON
+                    EDI&nbsp;<LongArrowRightIconLg className={c('direction-icon__flight')} />&nbsp;LON
                 </AlignedLarge>
             </BpkText>
             <BpkText tagName="p" textStyle="md">
