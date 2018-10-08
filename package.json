@@ -11,5 +11,9 @@
     "pretest": "(cd ./client && npm run lint) && (cd ./server && npm run lint)",
     "test": "(cd ./client && CI=true npm test) && (cd ./server && CI=true npm test)",
     "start": "echo 'Did you mean `npm run server` or `npm run client`?'"
+  },
+  "devDependencies": {
+    "bpk-component-image": "^2.0.59",
+    "bpk-theming": "^1.1.14"
   }
 }

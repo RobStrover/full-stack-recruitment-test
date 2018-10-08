@@ -1,0 +1,26 @@
+@import '~bpk-mixins';
+
+.FlightCard {
+  .AirlineImage {
+    padding: 0;
+    img {
+      border-radius: $bpk-border-radius-sm;
+    }
+  }
+  .FlightType {
+    color: $bpk-color-green-400;
+  }
+  .FlightPrice, .FlightTime {
+    color: $bpk-color-gray-900;
+  }
+  .AirportCode {
+    color: $bpk-color-gray-500;
+  }
+  .ProviderUrl {
+    color: $bpk-button-secondary-disabled-color;
+  }
+  .direction-icon-parent__flight {
+    fill: $bpk-button-secondary-disabled-color;
+    padding: 0;
+  }
+}
