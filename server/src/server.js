@@ -3,10 +3,10 @@
 
 const express = require('express');
 const { check, validationResult } = require('express-validator/check');
-const papoi = require('./flight-search-data');
+const dataParser = require('./dataParser');
+const livePricing = require('./live-pricing');
 
 const app = express();
-const livePricing = require('./live-pricing');
 
 app.disable('x-powered-by');
 
@@ -21,29 +21,30 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/search', [
-    // check('originPlace').exists().isLength({ max: 4 }).trim().escape(),
-    // check('destinationPlace').exists().isLength({ max: 4 }).trim().escape(),
-    // check('outboundDate').exists().isLength({ min: 10 }, { max: 10 }).trim().escape(),
-    // check('inboundDate').isLength({ min: 10 }, { max: 10 }).trim().escape(),
-    // check('cabinClass').optional({ nullable: true }).isIn(['economy', 'premiumeconomy', 'business', 'first']),
-    // check('adults').exists().isInt(),
-    // check('children').optional({ nullable: true }).isInt(),
-    // check('infants').optional({ nullable: true }).isInt(),
-    // check('includeCarriers').optional({ nullable: true }),
-    // check('groupPricing').optional({ nullable: true }),
+  check('originPlace').exists().isLength({ max: 4 }).trim()
+    .escape(),
+  check('destinationPlace').exists().isLength({ max: 4 }).trim()
+    .escape(),
+  check('outboundDate').exists().isLength({ min: 10 }, { max: 10 }).trim()
+    .escape(),
+  check('inboundDate').isLength({ min: 10 }, { max: 10 }).trim().escape(),
+  check('cabinClass').optional({ nullable: true }).isIn(['economy', 'premiumeconomy', 'business', 'first']),
+  check('adults').exists().isInt(),
+  check('children').optional({ nullable: true }).isInt(),
+  check('infants').optional({ nullable: true }).isInt(),
+  check('includeCarriers').optional({ nullable: true }),
+  check('groupPricing').optional({ nullable: true }),
 ], async (req, res) => {
-    res.json(papoi);
-    return;
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     return res.status(422).json({ errors: errors.array() });
-    // }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   try {
     const results = await livePricing.search(req.query);
-    res.json(results);
+    return res.json(dataParser.parse(results));
   } catch (err) {
-    res.status(500).send(err);
     console.error(err);
+    return res.status(500).send(err);
   }
 });
 

@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "bpk-component-image": "^2.0.59",
-    "bpk-theming": "^1.1.14"
+    "bpk-theming": "^1.1.14",
+    "jest": "^23.6.0"
   }
 }
