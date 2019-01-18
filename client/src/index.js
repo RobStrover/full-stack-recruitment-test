@@ -12,7 +12,7 @@ ReactDOM.render(React.createElement(App), document.getElementById('root'));
 
 // example api use
 // TODO put this call somewhere sensible
-// TODO send parameters to server - check out `server/src/live-pricing.js`
+// TODO send parameters to server - check out `se/rver/srclive-pricing.js`
 console.log('fetching results from server...');
 
 fetch('http://localhost:4000/api/search')

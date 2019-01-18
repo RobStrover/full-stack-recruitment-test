@@ -2,9 +2,12 @@
 // Disabling 'no-console' as it's reasonable for this file to do some logging.
 
 const express = require('express');
+const { check, validationResult } = require('express-validator/check');
 
 const app = express();
 const livePricing = require('./live-pricing');
+
+app.disable('x-powered-by');
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -16,25 +19,24 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-/**
-  Simple flight search api wrapper.
-
-  TODO: client should provide params.
-
-  API params and location values are here:
-  http://business.skyscanner.net/portal/en-GB/Documentation/FlightsLivePricingQuickStart
-*/
-app.get('/api/search', async (req, res) => {
+app.get('/api/search', [
+    // check('originPlace').exists().isLength({ max: 4 }).trim().escape(),
+    // check('destinationPlace').exists().isLength({ max: 4 }).trim().escape(),
+    // check('outboundDate').exists().isLength({ min: 10 }, { max: 10 }).trim().escape(),
+    // check('inboundDate').isLength({ min: 10 }, { max: 10 }).trim().escape(),
+    // check('cabinClass').optional({ nullable: true }).isIn(['economy', 'premiumeconomy', 'business', 'first']),
+    // check('adults').exists().isInt(),
+    // check('children').optional({ nullable: true }).isInt(),
+    // check('infants').optional({ nullable: true }).isInt(),
+    // check('includeCarriers').optional({ nullable: true }),
+    // check('groupPricing').optional({ nullable: true }),
+], async (req, res) => {
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //     return res.status(422).json({ errors: errors.array() });
+    // }
   try {
-    const results = await livePricing.search({
-    /*
-     TODO: client to provide params.
-     Some params are already provided for you - see live-pricing.js.
-     Check API docs to see the other params you need to provide.
-     */
-    });
-    // TODO - a better format for displaying results to the client
-    console.log('TODO: transform results for consumption by client');
+    const results = await livePricing.search(req.query);
     res.json(results);
   } catch (err) {
     res.status(500).send(err);
