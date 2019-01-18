@@ -13,6 +13,7 @@ module.exports = {
         "InboundDate": "2018-11-13",
         "LocationSchema": "Default",
         "CabinClass": "economy",
+
         "GroupPricing": false
     },
     "Status": "UpdatesComplete",

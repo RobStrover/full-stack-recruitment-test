@@ -3,6 +3,7 @@
 
 const express = require('express');
 const { check, validationResult } = require('express-validator/check');
+const papoi = require('./flight-search-data');
 
 const app = express();
 const livePricing = require('./live-pricing');
@@ -31,6 +32,8 @@ app.get('/api/search', [
     // check('includeCarriers').optional({ nullable: true }),
     // check('groupPricing').optional({ nullable: true }),
 ], async (req, res) => {
+    res.json(papoi);
+    return;
     // const errors = validationResult(req);
     // if (!errors.isEmpty()) {
     //     return res.status(422).json({ errors: errors.array() });
