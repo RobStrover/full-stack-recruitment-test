@@ -18,6 +18,7 @@ const LargeAlignedArrowRight = withAlignment(
 );
 
 const FlightCard = ({cardData}) => (
+
     <BpkCard className={c('FlightCard')} padded={true}>
         <BpkGridContainer>
             <BpkGridRow>
