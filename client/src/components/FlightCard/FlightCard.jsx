@@ -29,18 +29,18 @@ const FlightCard = ({cardData}) => (
                                 altText="image description"
                                 width={128}
                                 height={128}
-                                src={ cardData.misc.airlineIcon }
+                                src={ cardData.outboundFlight.flightAgentImage }
                         />
                         </BpkGridColumn>
                         <BpkGridColumn padded={false} width={4}>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.outbound.depart }</BpkComponentText>
+                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.outboundFlight.leavingTime }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.outbound.from }</BpkComponentText>
+                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.outboundFlight.outboundAirport }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                         </BpkGridColumn>
@@ -50,12 +50,12 @@ const FlightCard = ({cardData}) => (
                         <BpkGridColumn padded={false} width={4}>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.outbound.arrive }</BpkComponentText>
+                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.outboundFlight.arrivingTime }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.outbound.to }</BpkComponentText>
+                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.outboundFlight.arrivalAirport }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                         </BpkGridColumn>
@@ -64,12 +64,12 @@ const FlightCard = ({cardData}) => (
                 <BpkGridColumn padded={false} width={6} align={'right'}>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText tagName="p" textStyle="sm">{ cardData.outbound.duration }</BpkComponentText>
+                            <BpkComponentText tagName="p" textStyle="sm">{ cardData.outboundFlight.flightDuration }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText className={c('FlightType')} tagName="p" textStyle="sm">{ cardData.outbound.type }</BpkComponentText>
+                            <BpkComponentText className={c('FlightType')} tagName="p" textStyle="sm">{ cardData.outboundFlight.stops }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                 </BpkGridColumn>
@@ -83,18 +83,18 @@ const FlightCard = ({cardData}) => (
                                 altText="image description"
                                 width={128}
                                 height={128}
-                                src={ cardData.misc.airlineIcon }
+                                src={ cardData.returnFlight.flightAgentImage }
                             />
                         </BpkGridColumn>
                         <BpkGridColumn padded={false} width={4}>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.inbound.depart }</BpkComponentText>
+                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.returnFlight.leavingTime }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.inbound.from }</BpkComponentText>
+                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.returnFlight.outboundAirport }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                         </BpkGridColumn>
@@ -104,12 +104,12 @@ const FlightCard = ({cardData}) => (
                         <BpkGridColumn padded={false} width={4}>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.inbound.arrive }</BpkComponentText>
+                                    <BpkComponentText className={c('FlightTime')} tagName="p" textStyle="base">{ cardData.returnFlight.arrivingTime }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                             <BpkGridRow>
                                 <BpkGridColumn padded={false} width={12}>
-                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.inbound.to }</BpkComponentText>
+                                    <BpkComponentText className={c('AirportCode')} tagName="p" textStyle="base">{ cardData.returnFlight.arrivalAirport }</BpkComponentText>
                                 </BpkGridColumn>
                             </BpkGridRow>
                         </BpkGridColumn>
@@ -118,12 +118,12 @@ const FlightCard = ({cardData}) => (
                 <BpkGridColumn padded={false} width={6} align={'right'}>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText tagName="p" textStyle="sm">{ cardData.inbound.duration }</BpkComponentText>
+                            <BpkComponentText tagName="p" textStyle="sm">{ cardData.returnFlight.flightDuration }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText className={c('FlightType')} tagName="p" textStyle="sm">{ cardData.inbound.type }</BpkComponentText>
+                            <BpkComponentText className={c('FlightType')} tagName="p" textStyle="sm">{ cardData.returnFlight.stops }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                 </BpkGridColumn>
@@ -133,17 +133,17 @@ const FlightCard = ({cardData}) => (
                 <BpkGridColumn padded={false} width={8}>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText className={c('FlightPrice')} tagName="p" textStyle="xl">{ cardData.misc.price }</BpkComponentText>
+                            <BpkComponentText className={c('FlightPrice')} tagName="p" textStyle="xl">{ cardData.price.currency + cardData.price.value }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                     <BpkGridRow>
                         <BpkGridColumn padded={false} width={12}>
-                            <BpkComponentText className={c('ProviderUrl')} tagName="p" textStyle="base">{ cardData.misc.source }</BpkComponentText>
+                            <BpkComponentText className={c('ProviderUrl')} tagName="p" textStyle="base">{ cardData.agentName }</BpkComponentText>
                         </BpkGridColumn>
                     </BpkGridRow>
                 </BpkGridColumn>
                 <BpkGridColumn padded={true} width={4}>
-                    <BpkButton large>Select</BpkButton>
+                    <BpkButton blank={ true } href={ cardData.redirectLink } large>Select</BpkButton>
                 </BpkGridColumn>
             </BpkGridRow>
         </BpkGridContainer>
